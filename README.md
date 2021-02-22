@@ -1,14 +1,13 @@
 # SpringBoot-Final-Project
 Final Project for our Promineo Tech BESD Coding Bootcamp -- WebAPI 
 
-# SpringBoot-week4
 BESD Coding Bootcamp Spring Boot Week 5 & 6 -- Final Project (Week 3-4)
 
-Author:  sw-dev-lisa-s-nh
+**Author**:  sw-dev-lisa-s-nh
 
-Updated:  2/20/2021
+**Updated**:  2/20/2021
 
-Course:   Promineo Tech BESD Coding Bootcamp 2020-2021
+**Course**:   Promineo Tech BESD Coding Bootcamp 2020-2021
 
 This is the second week of our final project.   Well into the implementation at this point.
 I have completed the following tasks:
