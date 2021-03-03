@@ -1,16 +1,15 @@
 # SpringBoot-Final-Project
 Final Project for our Promineo Tech BESD Coding Bootcamp -- WebAPI 
 
-BESD Coding Bootcamp Spring Boot Week 5 & 6 -- Final Project (Week 3-4)
+BESD Coding Bootcamp Spring Boot Week 6 -- Final Project 
 
 **Author**:  sw-dev-lisa-s-nh
 
-**Updated**:  2/20/2021
+**Updated**:  3/3/2021
 
 **Course**:   Promineo Tech BESD Coding Bootcamp 2020-2021
 
-This is the second week of our final project.   Well into the implementation at this point.
-I have completed the following tasks:
+This is the final week of our final project.   
 
       (1) Designed the Database
       
@@ -20,42 +19,32 @@ I have completed the following tasks:
       
       (4) Implemented the Entities
       
-      (5) Implemented the Initial Controllers
+      (5) Implemented the Controllers
       
-      (6) Implemented the Initial Services
+      (6) Implemented the Services
       
       (7) CRUD Operations Are Implemented for Instruments, Gigs & Users
 
-My tasks for this week are:
-
-      (1) Test all implemented functionality
-
-      (2) Design the remaining functionality
-
-      (3) Start to implement the interaction between users and gigs
-
-
+      (8) GET of information on users and gigs by instrument, state, or genre.
+      
+      (9) Ability to update Gigs STATUS, Request, Confirm, Cancel, or Close a Gig.
+      
+      
 Here is the updated plan for my project:
 
 Initial Idea: My idea is to have a website that helps musicians connect with possible events (gigs) 
 & additionally have event (gig) planners connect with available musicians.  
 
 Entities:  
-1.  user (roles: musician & planner)
-2.  address (aspect of location for users and gigs)
+1.  user (roles: musician & planner) (MANYTOONE with address)
+2.  address (aspect of location for users and gigs) (ONETOMANY with Gig) (ONETOMANY with User) 
 3.  instrument
-4.  gig
+4.  gig (MANYTOONE with address)
 5.  gig_status (connects musicians with gigs)
-6.  join table on musician & instrument
-7.  join table on gig_status & instruments requested
+6.  join table on musician & instrument (MANYTOMANY)
+7.  join table on gig_status & instruments requested (MANYTOMANY)
 8.  (FUTURE PLAN):  credentials
 9.  (FUTURE PLAN):  Add another role to user:  systemAdmin
 
-           
-JoinTables & Relationships Between Tables:
-1.  One to Many: musician to instrument (Each musician might play multiple instruments)
-2.  One to Many:  gig_status to instrument (Each gig_status request might have multiple requested instruments)
-3.  Many to Many :  gig to instrument -- Each instrument can be requested multiple times for a gig (record in gig_status). 
-
-
-NOTES:  A gig might request multiple musicians to play the same instruments (gig_status)   A gig might request multiple musicians to play the same instruments (gig_status) multiple version of the same instrument.
+NOTES:  A gig might request multiple musicians to play the same instruments (gig_status)   
+(Requiring multiple version of the same instrument).
