@@ -20,21 +20,25 @@ public class InstrumentController {
 	@Autowired
 	private InstrumentService service;
 	
+	// READ:   Get all Instruments
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Object> getInstruments() {
 		return new ResponseEntity<Object>(service.getInstruments(), HttpStatus.OK);
 	}
 
+	// READ:   Get an Instrument by id
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Object> getInstrument(@PathVariable Long id) {
 		return new ResponseEntity<Object>(service.getInstrument(id), HttpStatus.OK);
 	}
 	
+	// CREATE:   Create a new Instrument
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Object> createInstrument(@RequestBody Instrument instrument) throws Exception {
 		return new ResponseEntity<Object>(service.createInstrument(instrument), HttpStatus.CREATED);
 	}
 	
+	// UPDATE:  Update an instrument by id
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Object> updateInstrument(@RequestBody Instrument instrument, @PathVariable Long id) throws Exception {
 		try {			
@@ -44,6 +48,7 @@ public class InstrumentController {
 		}
 	}
 	
+	// DELETE:  Delete an instrument by id
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Object> deleteInstrument( @PathVariable Long id) {
 		try {

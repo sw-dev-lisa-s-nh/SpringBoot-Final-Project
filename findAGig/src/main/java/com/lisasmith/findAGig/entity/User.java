@@ -2,6 +2,7 @@ package com.lisasmith.findAGig.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -72,7 +73,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.DETACH)
 	@JoinColumn(name = "addressId")
 	public Address getAddress() {
 		return address;
@@ -99,7 +100,7 @@ public class User {
 		this.systemAdmin = systemAdmin;
 	}
 	
-	@ManyToMany(mappedBy="musicians")
+	@ManyToMany(mappedBy="musicians", cascade=CascadeType.DETACH)
 	public List<Instrument> getInstruments() {
 		return instruments;
 	}

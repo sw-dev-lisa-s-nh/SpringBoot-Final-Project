@@ -2,6 +2,7 @@ package com.lisasmith.findAGig.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -66,7 +67,7 @@ public class Gig {
 		this.gigDuration = gigDuration;
 	}
 	
-	@ManyToOne
+	@ManyToOne (cascade=CascadeType.DETACH)
 	@JoinColumn(name = "addressId")
 	public Address getAddress() {
 		return address;
@@ -133,7 +134,7 @@ public class Gig {
 	}
 
 	
-	@OneToMany(mappedBy = "gigId")
+	@OneToMany(mappedBy = "gigId", cascade=CascadeType.DETACH)
 	public List<GigStatus> getGigStatuses() {
 		return gigStatuses;
 	}
@@ -141,5 +142,5 @@ public class Gig {
 	public void setGigStatuses(List<GigStatus> gigStatuses) {
 		this.gigStatuses = gigStatuses;
 	}
-
+	
 }

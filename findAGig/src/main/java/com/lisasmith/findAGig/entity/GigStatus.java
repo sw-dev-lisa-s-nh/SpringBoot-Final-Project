@@ -2,6 +2,7 @@ package com.lisasmith.findAGig.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -71,7 +72,7 @@ public class GigStatus {
 		this.status = status;
 	}	
 	
-	@ManyToMany (mappedBy="gigStatuses")
+	@ManyToMany (mappedBy="gigStatuses",cascade=CascadeType.DETACH)
 	public List<Instrument> getInstruments() {
 		return instruments;
 	}

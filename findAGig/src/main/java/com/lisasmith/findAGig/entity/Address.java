@@ -2,6 +2,7 @@ package com.lisasmith.findAGig.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Address {
 	
 	@JsonIgnore
 	private Set<Gig> gigs;
-	
+		
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getAddressId() {
@@ -67,7 +68,7 @@ public class Address {
 		this.zip = zip;
 	}
 	
-	@OneToMany(mappedBy="address")
+	@OneToMany(mappedBy="address",cascade=CascadeType.DETACH)
 	public Set<User> getUsers() {
 		return users;
 	}
@@ -77,7 +78,7 @@ public class Address {
 	}
 
 
-	@OneToMany(mappedBy = "address")
+	@OneToMany(mappedBy = "address",cascade=CascadeType.DETACH)
 	public Set<Gig> getGigs() {
 		return gigs;
 	}

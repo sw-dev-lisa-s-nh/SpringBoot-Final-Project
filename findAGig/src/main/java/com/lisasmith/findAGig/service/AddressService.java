@@ -12,7 +12,7 @@ import com.lisasmith.findAGig.repository.AddressRepository;
 @Service
 public class AddressService {
 	
-	private static final Logger logger = LogManager.getLogger(UserService.class);
+	private static final Logger logger = LogManager.getLogger(AddressService.class);
 	public static Long currentAddressId;
 
 	@Autowired
@@ -22,22 +22,15 @@ public class AddressService {
 		try {
 			Address address = new Address();
 			// create an address
-			logger.info("In createAddress");
 			if (!doesAddressExist(newAddress)) {
-				logger.info("Address does not exist");
 				address.setAddressId(newAddress.getAddressId());
-				logger.info("AddressId set");
 				address.setCity(newAddress.getCity());
-				logger.info("AddressCity set");
 				address.setState(newAddress.getState());
-				logger.info("AddressState set");
 				address.setStreet(newAddress.getStreet());
-				logger.info("AddressStreet set");
 				address.setZip(newAddress.getZip());
-				logger.info("AddressZip set");
+				logger.info("Created address.");
 				return repo.save(address);
 			} else {
-				logger.info("Address exists.  Id: " + currentAddressId);
 				return repo.findOne(currentAddressId);
 			}
 		} catch (Exception e) {
@@ -54,7 +47,6 @@ public class AddressService {
 		 // 2.  if found, 
 		 //			a.  Set addressExists to true
 		 //			b.  Set the static variable to the address_id
-		logger.info("In doesAddressExist()");
 
 		 Iterable<Address> allAddresses = repo.findAll();
 		 for (Address address : allAddresses ) {
@@ -62,7 +54,6 @@ public class AddressService {
 				 if (address.getStreet().equals(newAddress.getStreet())) {
 					 if (address.getState().equals(newAddress.getState())) {
 						 if (address.getZip().equals(newAddress.getZip())) {
-							 logger.info("Address matches");
 							 addressExists = true;
 							 currentAddressId = address.getAddressId();
 							 return addressExists;

@@ -8,7 +8,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lisasmith.findAGig.entity.GigStatus;
 import com.lisasmith.findAGig.entity.Instrument;
+import com.lisasmith.findAGig.entity.User;
 import com.lisasmith.findAGig.repository.InstrumentRepository;
 
 @Service
@@ -20,27 +22,25 @@ public class InstrumentService {
 	@Autowired
 	private InstrumentRepository repo;
 	
+	// READ:  retrieve all instruments
 	public Iterable<Instrument> getInstruments() {
-			logger.info("Finding all Instruments.");
-			return repo.findAll();
+		return repo.findAll();
 	}
 	
+	// READ:  retrieve one instrument by id
 	public Instrument getInstrument(Long id) {
-		logger.info("Finding one Instrument by id.");
 		return repo.findOne(id);
 }
 	
+	// CREATE:  create an instrument	
 	public Instrument createInstrument(Instrument newInstrument) throws Exception {
 		try {
 			Instrument createNewInstrument = new Instrument();
-			logger.info("Creating new Instrument.");
 			//create an instrument
-			logger.info("In createInstrument");
 			if (!doesInstrumentExist(newInstrument)) {
-				logger.info("Instrument does not exist");
 				createNewInstrument.setName(newInstrument.getName());
-				logger.info("create instrument: " + createNewInstrument.getName());
 				createNewInstrument = repo.save(createNewInstrument);
+				logger.info("Created instrument: " + createNewInstrument.getName());
 				return createNewInstrument;
 			} else {
 				createNewInstrument = repo.findOne(currentInstrumentId);
@@ -51,22 +51,19 @@ public class InstrumentService {
 			throw new Exception("Unable to create an instrument.");
 		}
 	}
-
+	
+	// CREATE:  create instruments
 	public List<Instrument> createInstruments(List<Instrument> newInstruments) throws Exception {		
 		
 		List<Instrument> newCreations  = new ArrayList<Instrument>();
 		try {
-			logger.info("Creating new Instruments.");
 			//create an instrument
-			logger.info("In createInstruments");
 			for (Instrument instrument : newInstruments) {
 				if (!doesInstrumentExist(instrument)) {
 					Instrument createNewInstrument = new Instrument();
-					logger.info("Instrument does not exist");
 					createNewInstrument.setName(instrument.getName());
-					logger.info("create instrument: " + createNewInstrument.getName());
 					newCreations.add(repo.save(createNewInstrument));
-					logger.info("New Instrument: " + createNewInstrument.getName() + " is saved!");
+					logger.info("Created instrument: " + createNewInstrument.getName());
 				} else {
 					newCreations.add(repo.findOne(currentInstrumentId));
 				}	
@@ -78,7 +75,7 @@ public class InstrumentService {
 		}
 	}
 	
-	
+	// Does this Instrument exist?  return true or false
 	public boolean doesInstrumentExist(Instrument newInstrument) {
 		boolean exists = false;
 	
@@ -87,12 +84,10 @@ public class InstrumentService {
 		 // 2.  if found, 
 		 //			a.  Set exists to true
 		 //			b.  Set the static variable to the instrument_id
-		logger.info("In doesInstrumentExist()");
 
 		 Iterable<Instrument> allInstruments = repo.findAll();
 		 for (Instrument instrument : allInstruments ) {
 			 if (instrument.getName().equals(newInstrument.getName()) || (instrument.getInstrumentId().equals(newInstrument.getInstrumentId()))) {
-				 logger.info("Instrument matches");
 				 exists = true;
 				 currentInstrumentId = instrument.getInstrumentId();
 				 return exists;
@@ -101,6 +96,7 @@ public class InstrumentService {
 		return exists;
 	}
 	
+	// UPDATE:  update the name of an instrument
 	public Instrument updateInstrument(Instrument newInstrument, Long id) throws Exception {
 		try {
 			Instrument oldInstrument = repo.findOne(id);
@@ -112,15 +108,37 @@ public class InstrumentService {
 			throw new Exception("Unable to update instrument: " + id);
 		}
 	}
-	
+	// DELETE:  This is ONLY allowed if an instrument is not being referenced by any user or gig!
+	//  		FUTURE:  This can be enhanced in the future to be allowed by an ADMIN	
 	public void removeInstrument(Long id) throws Exception  {
-		try {
-			repo.delete(id);
-			logger.info("Deleting Instrument: " + id);
-		} catch (Exception e) {
-			logger.error("Exception occurred while deleting instrument: " + id, e);
-			throw new Exception("Unable to delete instrument: " + id);
+		// If this instrument has been assigned to a Gig, do not delete!
+		Instrument instrument = repo.findOne(id);
+		List<GigStatus> instrumentGigStatuses = instrument.getGigStatuses();
+		for (GigStatus gigStatus : instrumentGigStatuses) {
+			if (gigStatus.getInstrumentId().equals(id)) {
+				logger.error("Delete Not Allowed -- Instrument is assigned to Gig(s) or Musician(s)!");
+				throw new Exception("Instrument: " + id +  " can not be deleted!");
+			}
 		}
 		
+		// If this instrument has been assigned to a User, do not delete!
+		List<User> musicians = instrument.getMusicians();
+		for (User user : musicians) {
+			for (Instrument userInstrument : user.getInstruments()) {
+				if (userInstrument.getInstrumentId().equals(id)) {
+					logger.error("Delete Not Allowed -- Instrument is assigned to Musician(s)!");
+					throw new Exception("Instrument: " + id +  " can not be deleted!");
+				}
+			}
+		}					
+		try {
+			repo.delete(id);
+			logger.info("Deleting Instrument: " + id);	
+		} catch (Exception e) {
+			logger.error("Exception occurred in delete operation: " + id, e);
+			throw new Exception(e.getMessage());
+		}
 	}
 }
+
+

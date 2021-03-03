@@ -23,7 +23,7 @@ import com.lisasmith.findAGig.util.UserType;
 @Service
 public class GigService {
 
-	private static final Logger logger = LogManager.getLogger(UserService.class);
+	private static final Logger logger = LogManager.getLogger(GigService.class);
 	
 	@Autowired
 	private GigRepository repo;
@@ -45,6 +45,8 @@ public class GigService {
 	
 	
 	// CREATE:  Create a Gig
+	//			This currently only creates the main Gig record, you must call another routine 
+	//			to add the instruments -- SHOULD THIS BE FIXED???
 		public Gig createGig(Gig newGig) throws Exception {
 			try {
 				Gig gig = new Gig();
@@ -52,9 +54,7 @@ public class GigService {
 				gig.setGigDate(newGig.getGigDate());
 				gig.setGigStartTime(newGig.getGigStartTime());
 				gig.setGigDuration(newGig.getGigDuration());
-				logger.info("before createAddress");
 				gig.setAddress(addressService.createAddress(newGig.getAddress()));
-				logger.info("after createAddress");
 				gig.setPhone(newGig.getPhone());
 				gig.setEvent(newGig.getEvent());
 				gig.setGenre(newGig.getGenre());
@@ -62,49 +62,54 @@ public class GigService {
 				gig.setSalary(newGig.getSalary());
 				gig.setEventStatus(newGig.getEventStatus());
 				gig.setPlannerId(newGig.getPlannerId());
-				logger.info("Create a Gig");
 				savedGig = repo.save(gig);
+				logger.info("Created a Gig");				
 				return savedGig;
 
 			} catch (Exception e) {
-				logger.error("Exception occurred while trying to create a gig.");
-				throw new Exception ("Unable to create a gig.");
+				logger.error("Exception occurred while trying to create a Gig.");
+				throw new Exception ("Unable to create a Gig.");
 			}
 		}
 		
-	// READ:  Return all Gigs
+	// READ:  Return all Gigs -- NO MATTER 
+	//			what the Gig eventStatus is set to:  PLANNED, OPEN, CANCELLED, CLOSED
 	public Iterable<Gig> getGigs() {
-		logger.info("Finding all Gigs");
 		return repo.findAll();
 	}
 	
-	// READ:  Return all Gigs & Instruments Information
+	// READ:  Return all Gigs & Instruments Information -- NO MATTER
+	//			what the Gig eventStatus is set to:  PLANNED, OPEN, CANCELLED, CLOSED
 	public Iterable<Gig> getGigsAndGigStatuses() {
-		logger.info("Finding all Gigs, & Instruments for each Gig!");
+		logger.info("Finding all Gigs & Instruments for each Gig!");
 		List<Gig> allGigs = (List<Gig>) repo.findAll();
-		int counter= 1;
 		for (Gig oneGig : allGigs) {
-			logger.info("Gigstatus: " + counter++);
 			 oneGig.setGigStatuses((List<GigStatus>) getGigStatuses(oneGig.getGigId()));
 		}
 		return allGigs;		
 	}
 	
+	// READ:  Return one Gigs & Instruments Information -- NO MATTER
+	//			what the Gig eventStatus is set to:  PLANNED, OPEN, CANCELLED, CLOSED	
+	public Gig getGigAndGigStatusesById(Long Id) {
+		logger.info("Finding one Gig: " + Id + "& Instruments for that Gig!");
+		Gig requestedGig = repo.findOne(Id);
+		requestedGig.setGigStatuses((List<GigStatus>) getGigStatuses(requestedGig.getGigId()));
+		return requestedGig;		
+	}
+	
 	// READ:  Return all Gigs & Instruments that are OPEN positions
 	public Iterable<Gig> getGigsAndGigStatusesByOpen() {
-		logger.info("Finding all Gigs, & Instruments for each Gig if OPEN!");
+		logger.info("Finding all Gigs & Instruments for each Gig if OPEN!");
 		List<Gig> matchedGigs = new ArrayList<Gig>();
 		List<Gig> allGigs = (List<Gig>) repo.findAll();
-		int counter= 1;
 		for (Gig oneGig : allGigs) {
 			boolean found = false;
+			// Check status at the Gig level first!  Only return Gigs that are OPEN
 			if ((oneGig.getEventStatus() != null) && (oneGig.getEventStatus().equals(StatusType.OPEN))) {
-				logger.info("Gig: " + counter++);
 				 List<GigStatus> tempList = (List<GigStatus>) getGigStatuses(oneGig.getGigId());
 				 List<GigStatus> openList = new ArrayList<GigStatus>();
-				 int counter1 = 1;
 				 for (GigStatus gigStatus : tempList) {
-					logger.info("Gigstatus: " + counter1++);
 				 // loop through all gigStatuses, and if status is OPEN, add to a temporary LIST<GigStatus>
 					 if (gigStatus.getStatus().equals(StatusType.OPEN)) {
 				        openList.add(gigStatus);
@@ -122,93 +127,22 @@ public class GigService {
 	}
 	// READ:  Return all Gigs & Instruments that are in a particular state  (OPEN or ALL)
 	public Iterable<Gig> getGigsAndGigStatusesByState(String stateName, boolean isByOpen) {
-		logger.info("Finding all Gigs, & Instruments for each Gig if in state: " + stateName);
+		logger.info("Finding all Gigs & Instruments for each Gig if in state: " + stateName);
 		List<Gig> allGigs = (List<Gig>) repo.findAll();
 		List<Gig> matchingGigs = new ArrayList<Gig>();
-		int counter= 1;
+		boolean useThisGig = true;
 		for (Gig oneGig : allGigs) {
-			logger.info("Gig: " + counter++);
-			// If the Gig state equals the stateName passed in, check to see if there are any open positions.
-			if (oneGig.getAddress().getState().equals(stateName)) {
-				List<GigStatus> tempList = (List<GigStatus>) getGigStatuses(oneGig.getGigId());
-				List<GigStatus> openList = new ArrayList<GigStatus>();
-				int counter1 = 1;
-				for (GigStatus gigStatus : tempList) {
-					logger.info("Gigstatus: " + counter1++);
-				 // loop through all gigStatuses, and if status is OPEN, add to a temporary LIST<GigStatus>
-					 if (isByOpen) {
-						 if (gigStatus.getStatus().equals(StatusType.OPEN)) {
-							 openList.add(gigStatus);
-						 }
-					 } else {
-				        openList.add(gigStatus);
-					 }
-				 }		 
-			 // Before end of loop, set oneGig.setGigStatuses(openList)); ==> OPEN GigStatus that is part of this Gig
-			 oneGig.setGigStatuses(openList);
-			 matchingGigs.add(oneGig);
-			}
-		}
-		return matchingGigs;		
-	}
-	
-	// READ:  Return all Gigs & Instruments that are in a particular instrument  (OPEN or ALL)
-		public Iterable<Gig> getGigsAndGigStatusesByInstrumentName(String instName, boolean isByOpen) {
-			logger.info("Finding all Gigs, & Instruments for each Gig if they need a: " + instName);
-			Instrument searchInstrument = instrumentRepo.findByName(instName);
-			List<Gig> allGigs = (List<Gig>) repo.findAll();
-			List<Gig> matchingGigs = new ArrayList<Gig>();
-			int counter= 1;
-			for (Gig oneGig : allGigs) {
-				logger.info("Gig: " + counter++);
-				boolean match = false;
-				// get the GigStatus records for this Gig, and check to see if that position is for instName, 
-				// and if it is OPEN.
-				
-				List<GigStatus> tempList = (List<GigStatus>) getGigStatuses(oneGig.getGigId());
-				List<GigStatus> openList = new ArrayList<GigStatus>();
-				int counter1 = 1;
-				for (GigStatus gigStatus : tempList) {
-					logger.info("Gigstatus: " + counter1++);
-				 // loop through all gigStatuses, and if status is OPEN, add to a temporary LIST<GigStatus>
-					 if (isByOpen) {
-						 if ((gigStatus.getStatus().equals(StatusType.OPEN)) 
-							 && (gigStatus.getInstrumentId().equals(searchInstrument.getInstrumentId()))) {
-							 openList.add(gigStatus);
-							 match = true;
-						 }
-					 } else {
-						 if (gigStatus.getInstrumentId().equals(searchInstrument.getInstrumentId())) {
-							 openList.add(gigStatus);
-							 match = true;
-						 }
-					 }
-				 }	
-						 
-				 // Before end of loop, set oneGig.setGigStatuses(openList)); ==> OPEN GigStatus that is part of this Gig
-				if (match) {				
-					oneGig.setGigStatuses(openList);
-					matchingGigs.add(oneGig);
+			if (isByOpen) {
+				if ((oneGig.getEventStatus() != null) && (!(oneGig.getEventStatus().equals(StatusType.OPEN))))  {
+					useThisGig = false;
 				}
 			}
-			return matchingGigs;		
-		}
-	
-		// READ:  Return all Gigs & Instruments that are a particular Genre Type (OPEN or ALL)
-		public Iterable<Gig> getGigsAndGigStatusesByGenreType(GenreType genreType, boolean isByOpen) {
-			logger.info("Finding all Gigs, & Instruments for each Gig if by genre: " + genreType);
-			List<Gig> allGigs = (List<Gig>) repo.findAll();
-			List<Gig> matchingGigs = new ArrayList<Gig>();
-			int counter= 1;
-			for (Gig oneGig : allGigs) {
-				logger.info("Gig: " + counter++);
+			if (useThisGig) {
 				// If the Gig state equals the stateName passed in, check to see if there are any open positions.
-				if (oneGig.getGenre().equals(genreType)) {
+				if (oneGig.getAddress().getState().equals(stateName)) {
 					List<GigStatus> tempList = (List<GigStatus>) getGigStatuses(oneGig.getGigId());
 					List<GigStatus> openList = new ArrayList<GigStatus>();
-					int counter1 = 1;
 					for (GigStatus gigStatus : tempList) {
-						logger.info("Gigstatus: " + counter1++);
 					 // loop through all gigStatuses, and if status is OPEN, add to a temporary LIST<GigStatus>
 						 if (isByOpen) {
 							 if (gigStatus.getStatus().equals(StatusType.OPEN)) {
@@ -223,25 +157,110 @@ public class GigService {
 				 matchingGigs.add(oneGig);
 				}
 			}
+			useThisGig = true;
+		}
+		return matchingGigs;		
+	}
+	
+	// READ:  Return all Gigs & Instruments that are in a particular instrument  (OPEN or ALL)
+		public Iterable<Gig> getGigsAndGigStatusesByInstrumentName(String instName, boolean isByOpen) {
+			logger.info("Finding all Gigs & Instruments for each Gig if they need a: " + instName);
+			Instrument searchInstrument = instrumentRepo.findByName(instName);
+			List<Gig> allGigs = (List<Gig>) repo.findAll();
+			List<Gig> matchingGigs = new ArrayList<Gig>();
+			boolean useThisGig = true;
+			for (Gig oneGig : allGigs) {
+				if (isByOpen) {
+					if ((oneGig.getEventStatus() != null) && (!(oneGig.getEventStatus().equals(StatusType.OPEN))))  {
+						useThisGig = false;
+					}
+				}
+				if (useThisGig) {
+					boolean match = false;
+					// get the GigStatus records for this Gig, and check to see if that position is for instName, 
+					// and if it is OPEN.
+					
+					List<GigStatus> tempList = (List<GigStatus>) getGigStatuses(oneGig.getGigId());
+					List<GigStatus> openList = new ArrayList<GigStatus>();
+					for (GigStatus gigStatus : tempList) {
+					 // loop through all gigStatuses, and if status is OPEN, add to a temporary LIST<GigStatus>
+						 if (isByOpen) {
+							 if ((gigStatus.getStatus().equals(StatusType.OPEN)) 
+								 && (gigStatus.getInstrumentId().equals(searchInstrument.getInstrumentId()))) {
+								 openList.add(gigStatus);
+								 match = true;
+							 }
+						 } else {
+							 if (gigStatus.getInstrumentId().equals(searchInstrument.getInstrumentId())) {
+								 openList.add(gigStatus);
+								 match = true;
+							 }
+						 }
+					}						 
+					 // Before end of loop, set oneGig.setGigStatuses(openList)); ==> OPEN GigStatus that is part of this Gig
+					if (match) {				
+						oneGig.setGigStatuses(openList);
+						matchingGigs.add(oneGig);
+					}
+				}
+				useThisGig = true;
+			}
+			return matchingGigs;		
+		}
+	
+		// READ:  Return all Gigs & Instruments that are a particular Genre Type (OPEN or ALL)
+		public Iterable<Gig> getGigsAndGigStatusesByGenreType(GenreType genreType, boolean isByOpen) {
+			logger.info("Finding all Gigs & Instruments for each Gig if by genre: " + genreType);
+			List<Gig> allGigs = (List<Gig>) repo.findAll();
+			List<Gig> matchingGigs = new ArrayList<Gig>();
+			boolean useThisGig = true;
+			for (Gig oneGig : allGigs) {
+				if (isByOpen) {
+					if ((oneGig.getEventStatus() != null) && (!(oneGig.getEventStatus().equals(StatusType.OPEN))))  {
+						useThisGig = false;
+					}
+				}
+				if (useThisGig) {
+					// If the Gig state equals the stateName passed in, check to see if there are any open positions.
+					if (oneGig.getGenre().equals(genreType)) {
+						List<GigStatus> tempList = (List<GigStatus>) getGigStatuses(oneGig.getGigId());
+						List<GigStatus> openList = new ArrayList<GigStatus>();
+						for (GigStatus gigStatus : tempList) {
+						 // loop through all gigStatuses, and if status is OPEN, add to a temporary LIST<GigStatus>
+							 if (isByOpen) {
+								 if (gigStatus.getStatus().equals(StatusType.OPEN)) {
+									 openList.add(gigStatus);
+								 }
+							 } else {
+						        openList.add(gigStatus);
+							 }
+						 }		 
+					 // Before end of loop, set oneGig.setGigStatuses(openList)); ==> OPEN GigStatus that is part of this Gig
+					 oneGig.setGigStatuses(openList);
+					 matchingGigs.add(oneGig);
+					}
+				}
+				useThisGig = true;
+			}
 			return matchingGigs;		
 		}
 		
 	
 	// READ:  Find all instruments associated with a particular gigId
 	public Iterable<GigStatus> getGigStatuses(Long gigId) {
-		logger.info("Finding all Instruments for a particularGig!");
+		logger.info("Finding all Instruments for Gig: " + gigId);
 		return statusRepo.findByGigId(gigId);			 
 	}
+
 	
 	// READ:  Find all musicians associated with a particular GigId
 	public Iterable<User> getGigStatusesWithMusicianInfo(Long gigId) {
-		logger.info("Finding all Musicians for a particularGig!");
+		logger.info("Finding all Musicians for gig: " + gigId);
 		Iterable<GigStatus> matchingGigStatuses = statusRepo.findByGigId(gigId);
 		List<User> matchingMusicians = new ArrayList<User>();
 		for (GigStatus gigStatus : matchingGigStatuses) {
 			if (gigStatus.getMusicianId() != null) {
 				matchingMusicians.add(userRepo.findOne(gigStatus.getMusicianId()));
-				logger.info("Matching Status #: " + gigStatus.getId());
 			}
 		}
 		return matchingMusicians;
@@ -249,12 +268,10 @@ public class GigService {
 
 	// READ:  Find all Gigs assigned to a UserId  (ANY STATUS IS FINE)
 	public Iterable<GigStatus> getGigStatusesByUserId(Long userId) {
-		logger.info("Finding all Gigs for a particular UserId!");
+		logger.info("Finding all Gigs for userId: " + userId);
 		return statusRepo.findByMusicianId(userId);
 	}
-	 
-
-	
+	 	
 	
 	// In process here...  Not sure how to create a relationship between
 	// Gig and all GigStatus in memory... so that I can then retrieve them from that list.
@@ -266,38 +283,25 @@ public class GigService {
 			gig.setGigDate(newGig.getGigDate());
 			gig.setGigStartTime(newGig.getGigStartTime());
 			gig.setGigDuration(newGig.getGigDuration());
-			logger.info("before createAddress");
 			gig.setAddress(addressService.createAddress(newGig.getAddress()));
-			logger.info("after createAddress");
 			gig.setPhone(newGig.getPhone());
 			gig.setEvent(newGig.getEvent());
 			gig.setGenre(newGig.getGenre());
 			gig.setDescription(newGig.getDescription());
 			gig.setSalary(newGig.getSalary());
 			gig.setPlannerId(newGig.getPlannerId());
-			logger.info("Create a Gig");
 			savedGig = repo.save(gig);
-					
-			int counter = 1;
-			// How do I get to the "Instruments" part of the Gig record? 
-			Iterable<GigStatus> relevantGigStatuses = newGig.getGigStatuses();
-			for (GigStatus status : relevantGigStatuses) {
-				logger.info("adding gigStatuses to Gig: ", counter++);
-				savedGig.setGigStatuses((List<GigStatus>) createGigStatus(status,savedGig.getGigId()));
-			}
-			return savedGig;
-
+			logger.info("Created Gig: " + savedGig.getGigId());
+			// Future Development:  Add a way to read the instruments from this gig!
+			return repo.save(savedGig);
 		} catch (Exception e) {
-			logger.error("Exception occurred while trying to create a gig.");
-			throw new Exception ("Unable to create a gig.");
+			logger.error("Exception occurred while trying to create a Gig & associated Instruments.");
+			throw new Exception ("Unable to create a Gig or associated Instruments.");
 		}
 	}
 
 	//  CREATE:  Create relationship between GigStatus table and instruments table
-	private void addGigStatustoInstruments(GigStatus gigStatus) {
-		logger.info("In addGigStatustoInstruments instrumentId: " + gigStatus.getInstrumentId());
-		
-		// Changed .findOne(instrument.getInstrumentId() -->  .findByName(instrument.getName()	
+	private void addGigStatustoInstruments(GigStatus gigStatus) {		
 		Instrument instrument = instrumentRepo.findOne(gigStatus.getInstrumentId());
 		Instrument addInstrument = instrument;
 
@@ -307,27 +311,18 @@ public class GigService {
 
 		logger.info("Instrument name: " + addInstrument.getName() + " id: " + addInstrument.getInstrumentId());
 		if (gigStatuses != null) {
-			logger.info("gigStatuses is NOT NULL");
 			addInstrument.getGigStatuses().add(gigStatus);
 			instrumentRepo.save(addInstrument);
-			logger.info("After add(gigStatus)");		
 		} else {
 			//create a list, and add the instrument
-			logger.info("gigStatuses is NULL!");
 			GigStatus newGigStatus = new GigStatus();
 			
 			List<GigStatus> newGigStatuses = new ArrayList<GigStatus>();
 			newGigStatus = gigStatus;
-			logger.info("newGigStatus id: " + newGigStatus.getId() + " gig_id: " + newGigStatus.getGigId());
 			
 			addInstrument.setGigStatuses(newGigStatuses);	
-			logger.info("newGigStatuses: " + addInstrument.getGigStatuses());
-			logger.info("After newInstrument.setGigStatuses()");
 			if ((addInstrument.getGigStatuses() != null) && (addInstrument.getGigStatuses().add(newGigStatus))) {
-				logger.info("After adding newInstrument in addInstrument.getGigStatuses().add(newGigStatus)");
-				logger.info("Re-save addInstrument in the repo");
 				instrumentRepo.save(addInstrument);
-				logger.info("after instrumentRepo.save(addInstrument)");
 			}
 		}
 		addInstrument = instrumentRepo.findOne(instrument.getInstrumentId());
@@ -339,25 +334,18 @@ public class GigService {
 		try {
 			List<GigStatus> savedGigStatuses = new ArrayList<GigStatus>();			
 			Gig oldGig = repo.findOne(gigId);
-			logger.info("In createGigStatus");
 			
 			GigStatus createGigStatus = new GigStatus();
 			
-			logger.info("gigStatus.getInstruments(): " + gigStatus.getInstruments());
 			createGigStatus.setInstruments(instrumentService.createInstruments(gigStatus.getInstruments()));
-			logger.info("after createInstruments");
 			
 			List<Instrument> gigRequiredInstruments = new ArrayList<Instrument>();		
 			gigRequiredInstruments = createGigStatus.getInstruments();
 			
 			if (gigRequiredInstruments != null) {
-				logger.info("gigRequiredInstruments is NOT null!");
-				logger.info("After gigRequiredInstruments: " + gigRequiredInstruments.size());
 				Double splitSalary = (oldGig.getSalary()/gigRequiredInstruments.size());
-				logger.info("Salary:  " + splitSalary);
-				
+
 				for (Instrument inst : gigRequiredInstruments) {
-					logger.info("In createGigStatus instrument inst name:" + inst.getName());
 					GigStatus newGigStatus = new GigStatus();
 					newGigStatus.setGigId(oldGig.getGigId());
 					newGigStatus.setStatus(StatusType.OPEN);
@@ -366,25 +354,16 @@ public class GigService {
 					
 					for (Instrument oneInst : newGigStatus.getInstruments()) {
 						if (oneInst.getName().equals(inst.getName())) {
-							logger.info("Adding Instrument: " + inst.getName() + " with id: " + inst.getInstrumentId());
 							newGigStatus.setInstrumentId(oneInst.getInstrumentId());
 						}
-					}
-					
+					}				
 					// Create a new GigStatus
 					newGigStatus = statusRepo.save(newGigStatus);
-
-					logger.info("Before addGigStatustoInstruments");
 					addGigStatustoInstruments(newGigStatus);
-					logger.info("After addGigStatustoInstruments");
 					savedGigStatuses.add(newGigStatus);
-
-					logger.info("Adding Instrument: " + inst.getInstrumentId() + " and GigId: " + oldGig.getGigId());
 				} 
-
 			}
-			return savedGigStatuses;
-			
+			return savedGigStatuses;			
 		} catch (Exception e) {
 				logger.error("Exception occurred while trying to create a Gig Status.");
 				throw new Exception("Unable to add an instrument to a Gig.");
@@ -466,35 +445,23 @@ public class GigService {
 			
 		//Retrieve all GigStatuses associated with the passed in GigId
 			matchedGigStatuses = statusRepo.findByGigId(gigId);
-			logger.info("In updateGigStatus -- after findByGigId");
 
 		//Retrieve THE Instrument RECORD of the requested Instrument!  
 			Instrument requestedInstrument = new Instrument();
 			requestedInstrument = findMatchingInstrument(gigStatus.getInstruments());
-			logger.info("In updateGigStatus -- requestedInstrument is: " + requestedInstrument.getName());
 			
 		//  Get the requested Instrument from the repository			
 		// 		FIND IF REQUESTED INSTRUMENT matches an OPEN GIGSTATUS record for this Gig
 			User theMatchUser  = new User();
-			//GigStatus theMatchStatus = new GigStatus();
 			for (GigStatus matchGigStatus : matchedGigStatuses) {
 				if (matchGigStatus.getStatus().equals(StatusType.OPEN)) {
-					logger.info("matchGigStatus.getId(): " + matchGigStatus.getId() + " matchGigStatus.getStatus(): " + matchGigStatus.getStatus());
 					if ((matchGigStatus.getInstrumentId().equals(requestedInstrument.getInstrumentId()))
 							&& (matchInstrument == false)){
-						logger.info("matchGigStatus.getId(): " + matchGigStatus.getId() + " matchGigStatus.getStatus(): " + matchGigStatus.getStatus());
 						matchInstrument = true;
 						relatedGigStatus = matchGigStatus;
-						logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " status: " + relatedGigStatus.getStatus());
-						logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " gigId: " + relatedGigStatus.getGigId());
-						logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " musicianId: " + relatedGigStatus.getMusicianId());
-						logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " salary: " + relatedGigStatus.getSalary());
-						logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " instrumentId: " + relatedGigStatus.getInstrumentId());
 					}
 				}
 			}
-			logger.info("After for loop -- Matched GigStatus:  " + relatedGigStatus.getId() + " status: " + relatedGigStatus.getStatus());
-
 			
 		// Find USER record in database, and get their instruments, and make sure that the correct instrument matches
 			User relatedUser = userRepo.findOne(userId);
@@ -521,22 +488,14 @@ public class GigService {
 							logger.info("looking to make a request");
 							relatedGigStatus.setStatus(StatusType.REQUESTED);
 							relatedGigStatus.setMusicianId(theMatchUser.getId());
-							logger.info("before save(relatedGigStatus)");
-							logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " status: " + relatedGigStatus.getStatus());
-							logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " gigId: " + relatedGigStatus.getGigId());
-							logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " musicianId: " + relatedGigStatus.getMusicianId());
-							logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " salary: " + relatedGigStatus.getSalary());
-							logger.info("Matched GigStatus:  " + relatedGigStatus.getId() + " instrumentId: " + relatedGigStatus.getInstrumentId());
 							statusRepo.save(relatedGigStatus);
-							logger.info("after save(relatedGigStatus)");
-
 							return relatedGigStatus;
 						} else {
 							logger.error("Invalid Request for an OPEN GIG.");
 						}
 						
 					} else {
-						logger.error("Requested Gig Can not be assigned.");			
+						logger.error("Requested Gig can not be assigned.");			
 					}
 				} else {
 					logger.error("Instrument requested does not match.");
@@ -547,16 +506,15 @@ public class GigService {
 			}  // End of for every gigStatus in this gig (matches gigId)
 
 		} catch  (Exception e) {
-			logger.error("Exception occurred while trying to update a Gig's status.");
-			throw new Exception("Unable to update gigStatus: " + relatedGigStatus.getId() + " with userId: " + userId);
+			logger.error("Unable to update gigStatus: " + relatedGigStatus.getId() + " with userId: " + userId);
+			throw new Exception(e.getMessage());
 		}	
-		logger.error("Exception occurred while trying to update a Gig's status.");
+		logger.error("Unable to update gigStatus: " + relatedGigStatus.getId() + " with userId: " + userId);
 		throw new Exception("Unable to update gigStatus: " + relatedGigStatus.getId() + " with userId: " + userId);
 	}
 	
 	//  Retrieve a matching instrument record.
 	public Instrument findMatchingInstrument(List<Instrument> requestedInstruments) throws Exception {
-		//List<Instrument> allMatchingInstruments = new ArrayList<Instrument>();
 		Iterable<Instrument> allInstruments = new ArrayList<Instrument>();
 		allInstruments = instrumentRepo.findAll();			
 		for (Instrument matchedInstrument : allInstruments) {
@@ -567,13 +525,40 @@ public class GigService {
 				}			
 			}
 		}
-		logger.error("No instrument found!");
 		throw new Exception("No instrument found!");
 	}
+	
+	public Gig updateGigStatusOnly(Long gigId, StatusType newStatus) throws Exception {
+		try {
+			Gig oldGig = repo.findOne(gigId);
+			List<GigStatus> updatedGigStatuses = new ArrayList<GigStatus>();
+			logger.info("Updating gig: " + gigId);
+			Gig savedGig = new Gig();
+			oldGig.setEventStatus(newStatus);	
+			savedGig = repo.save(oldGig);
+			
+			// Find all GigStatus records for this Gig, and Set them all to the new status			
+			List<GigStatus> relatedGigStatuses = (List<GigStatus>) statusRepo.findByGigId(gigId);			
+			for (GigStatus gigStatus : relatedGigStatuses) {
+				gigStatus.setStatus(newStatus);
+				statusRepo.save(gigStatus);
+				updatedGigStatuses.add(gigStatus);
+			}	
+			savedGig.setGigStatuses(updatedGigStatuses);
+			return savedGig;
+		} catch (Exception e) {
+				logger.error("Exception occurred while updating the EventStatus of a Gig.");
+				throw new Exception("Unable to update gig id:" + gigId);
+		} 
+	}
+	
 	
 	public Gig updateGig(Gig newGig, Long gigId) throws Exception {
 		try {
 			Gig oldGig = repo.findOne(gigId);
+			List<GigStatus> updatedGigStatuses = new ArrayList<GigStatus>();
+			logger.info("Updating gig: " + gigId);
+			Gig savedGig = new Gig();
 			oldGig.setGigDate(newGig.getGigDate());
 			oldGig.setGigStartTime(newGig.getGigStartTime());
 			oldGig.setGigDuration(newGig.getGigDuration());
@@ -583,24 +568,18 @@ public class GigService {
 			oldGig.setPlannerId(newGig.getPlannerId());
 			oldGig.setSalary(newGig.getSalary());
 			oldGig.setDescription(newGig.getDescription());
-			logger.info("Updating gig: " + gigId);
-			Gig savedGig = new Gig();
+			oldGig.setEventStatus(newGig.getEventStatus());
 			savedGig = repo.save(oldGig);
-						
-			// Populate GigStatus Table
-			// Maybe a @JsonIgnore in Gig??
 			
-//			Set<Instrument> gigRequiredInstruments = new HashSet<Instrument>();
-//			gigRequiredInstruments = savedGig.getInstruments();
-//			for (Instrument inst : gigRequiredInstruments) {
-//				GigStatus gigStatus = new GigStatus();
-//				gigStatus.setGigId(savedGig.getGigId());
-//				gigStatus.setStatus(StatusType.OPEN);
-//				gigStatus.setSalary(savedGig.getSalary());
-//				logger.info("Adding Instrument: " + inst.getInstrumentId() + " to GigId: " + savedGig.getGigId());
-//				gigStatus.setInstrumentId(inst.getInstrumentId());
-//				statusRepo.save(gigStatus);
-//			}			
+			// Find all GigStatus records for this Gig, and Set them to the new status			
+			List<GigStatus> relatedGigStatuses = (List<GigStatus>) statusRepo.findByGigId(gigId);			
+			for (GigStatus gigStatus : relatedGigStatuses) {
+				gigStatus.setStatus(savedGig.getEventStatus());
+				statusRepo.save(gigStatus);
+				// Should I add the gigStatus records to the savedGig here???
+				updatedGigStatuses.add(gigStatus);
+			}
+			savedGig.setGigStatuses(updatedGigStatuses);
 			return savedGig;
 		} catch (Exception e) {
 			logger.error("Exception occurred while trying to update a gig.");
@@ -614,15 +593,24 @@ public class GigService {
 	//			of a Gig!
 	public void deleteGig(Long gigId) throws Exception {	
 		try {
-			Iterable<GigStatus> gigStatusByGigId = getGigStatuses(gigId);
-			for (GigStatus status : gigStatusByGigId){
-				statusRepo.delete(status);
+			Gig requestedGig = repo.findOne(gigId);
+			logger.info("Found Gig: " + requestedGig.getGigId());
+			User planner = userRepo.findOne(requestedGig.getPlannerId());
+			logger.info("Found Planner: " + planner.getId());
+			if (planner.getUserType().equals(UserType.ADMIN)) {
+				Iterable<GigStatus> gigStatusByGigId = getGigStatuses(gigId);
+				for (GigStatus status : gigStatusByGigId){
+					statusRepo.delete(status);
+				}
+				repo.delete(gigId);
+				logger.info("Deleted gig: " + gigId);
+			} else {
+				logger.info("Only an ADMIN can delete a Gig!");
+				throw new  Exception("Only an ADMIN can delete a Gig!");
 			}
-			repo.delete(gigId);
-			logger.info("Deleted gig: " + gigId);
 		} catch (Exception e) {
 			logger.error("Exception occurred while trying to delete gig:" + gigId);
-			throw new Exception("Unable to delete gig.");
+			throw new Exception(e.getMessage());
 		}
 	}
 }

@@ -14,6 +14,7 @@ import com.lisasmith.findAGig.entity.Gig;
 import com.lisasmith.findAGig.entity.GigStatus;
 import com.lisasmith.findAGig.service.GigService;
 import com.lisasmith.findAGig.util.GenreType;
+import com.lisasmith.findAGig.util.StatusType;
 
 @RestController
 @RequestMapping("/gigs")
@@ -23,11 +24,11 @@ public class GigController {
 	private GigService service;
 	
 	
-//	// READ:  Retrieve all gigs
-//	@RequestMapping(method=RequestMethod.GET)
-//	public ResponseEntity<Object> getGigs() {
-//		return new ResponseEntity<Object>(service.getGigs(), HttpStatus.OK);
-//	}
+	// READ:  Retrieve all gigs -- does not return instruments, just gig information
+	@RequestMapping(value="/only", method=RequestMethod.GET)
+	public ResponseEntity<Object> getGigs() {
+		return new ResponseEntity<Object>(service.getGigs(), HttpStatus.OK);
+	}
 	
 	// READ:  Retrieve all gigs & gig statuses
 	@RequestMapping(method=RequestMethod.GET)
@@ -37,8 +38,14 @@ public class GigController {
 
 	// CREATE: Create a Gig
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Object> createGig(@RequestBody Gig gig) throws Exception {
+	public ResponseEntity<Object> createGigAndGigStatuses(@RequestBody Gig gig) throws Exception {
 		return new ResponseEntity<Object>(service.createGig(gig), HttpStatus.CREATED);
+	}
+	
+	// CREATE:  Add (ADD) instruments into GigStatus for an existing Gig
+	@RequestMapping(value="/{id}",method=RequestMethod.POST)
+	public ResponseEntity<Object> createGigStatus(@RequestBody GigStatus gigStatus, @PathVariable Long id) throws Exception {
+			return new ResponseEntity<Object>(service.createGigStatus(gigStatus,id), HttpStatus.CREATED);
 	}
 	
 	// UPDATE: Update a Gig by id 
@@ -51,16 +58,22 @@ public class GigController {
 		}
 	}
 	
-	// CREATE:  Add (ADD) instruments into GigStatus for an existing Gig
-	@RequestMapping(value="/{id}",method=RequestMethod.POST)
-	public ResponseEntity<Object> createGigStatus(@RequestBody GigStatus gigStatus, @PathVariable Long id) throws Exception {
-			return new ResponseEntity<Object>(service.createGigStatus(gigStatus,id), HttpStatus.CREATED);
-	}
+	// UPDATE: Update a Gig by id 
+		@RequestMapping(value="/{id}/status/{statusType}", method=RequestMethod.PUT)
+		public ResponseEntity<Object> updateGig(@PathVariable Long id, @PathVariable StatusType statusType) throws Exception {
+			try {
+				return new ResponseEntity<Object>(service.updateGigStatusOnly(id,statusType), HttpStatus.OK);
+			} catch (Exception e) {
+				return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
+			}
+		}
 	
 	// READ:  Read INSTRUMENTS from GigStatus for an existing Gig by GigId
+	//   NEW:  We decided to add the Gig Information to this request.  
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
-	public ResponseEntity<Object> getGigStatuses(@PathVariable Long id) throws Exception {
-			return new ResponseEntity<Object>(service.getGigStatuses(id), HttpStatus.OK);
+	public ResponseEntity<Object> getGigandGigStatuses(@PathVariable Long id) throws Exception {
+	//public ResponseEntity<Object> getGigStatuses(@PathVariable Long id) throws Exception {
+			return new ResponseEntity<Object>(service.getGigAndGigStatusesById(id), HttpStatus.OK);
 	}
 
 	// READ:  Read all USERS from GigStatus that match a particular existing Gig by GigId
@@ -81,14 +94,14 @@ public class GigController {
 	}
 	
 	// UPDATE: Update a Gig/GigStatus by id with a new Status by ID
-		@RequestMapping(value="/{id}/users/{musicianId}/confirm/{plannerId}", method=RequestMethod.PUT)
-		public ResponseEntity<Object> updateGigStatusConfirm(@RequestBody GigStatus gigStatus, @PathVariable Long id, @PathVariable Long musicianId, @PathVariable Long plannerId) throws Exception {
-			try {
-				return new ResponseEntity<Object>(service.updateGigStatusConfirm(gigStatus, id, musicianId, plannerId), HttpStatus.OK);
-			} catch (Exception e) {
-				return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
-			}
-		}
+	@RequestMapping(value="/{id}/users/{musicianId}/confirm/{plannerId}", method=RequestMethod.PUT)
+	public ResponseEntity<Object> updateGigStatusConfirm(@RequestBody GigStatus gigStatus, @PathVariable Long id, @PathVariable Long musicianId, @PathVariable Long plannerId) throws Exception {
+		try {
+			return new ResponseEntity<Object>(service.updateGigStatusConfirm(gigStatus, id, musicianId, plannerId), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}	
+	}
 	
 	// READ:  Retrieve gigs with OPEN positions
 	@RequestMapping(value="/open",method=RequestMethod.GET)
@@ -140,29 +153,28 @@ public class GigController {
 
 	
 	// READ:  Retrieve gigs with matching /state/{name} 
-		@RequestMapping(value="/state/{name}",method=RequestMethod.GET)
-		public ResponseEntity<Object> getGigsandGigStatusByState(
-				@PathVariable String name, 
-				@RequestParam(value = "isOpen", required=false, defaultValue = "false") boolean isOpen) throws Exception {
-	
-			try {
-				return new ResponseEntity<Object>(service.getGigsAndGigStatusesByState(name, isOpen), HttpStatus.OK);					
-			} catch (Exception e) {
-				return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
-			}
+	@RequestMapping(value="/state/{name}",method=RequestMethod.GET)
+	public ResponseEntity<Object> getGigsandGigStatusByState(
+			@PathVariable String name, 
+			@RequestParam(value = "isOpen", required=false, defaultValue = "false") boolean isOpen) throws Exception {
+		try {
+			return new ResponseEntity<Object>(service.getGigsAndGigStatusesByState(name, isOpen), HttpStatus.OK);					
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
+	}
 		
 	// READ:  Retrieve gigs with matching /instrument/{name} 
-		@RequestMapping(value="/instrument/{name}",method=RequestMethod.GET)
-		public ResponseEntity<Object> getGigsandGigStatusByInstrument(
-				@PathVariable String name, 
-				@RequestParam(value = "isOpen", required=false, defaultValue = "false") boolean isOpen) throws Exception {		
-			try {
-				return new ResponseEntity<Object>(service.getGigsAndGigStatusesByInstrumentName(name,isOpen), HttpStatus.OK);
-			} catch (Exception e) {
-				return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
-			}
-		}	
+	@RequestMapping(value="/instrument/{name}",method=RequestMethod.GET)
+	public ResponseEntity<Object> getGigsandGigStatusByInstrument(
+			@PathVariable String name, 
+			@RequestParam(value = "isOpen", required=false, defaultValue = "false") boolean isOpen) throws Exception {		
+		try {
+			return new ResponseEntity<Object>(service.getGigsAndGigStatusesByInstrumentName(name,isOpen), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+	}	
 		
 	// READ:  Retrieve gigs with matching /genre/{type} 
 		@RequestMapping(value="/genre/{type}",method=RequestMethod.GET)
@@ -182,6 +194,7 @@ public class GigController {
 	public ResponseEntity<Object> getGigStatusesByUserId(@PathVariable Long userId) throws Exception {
 			return new ResponseEntity<Object>(service.getGigStatusesByUserId(userId), HttpStatus.OK);
 	}
+	
 	
 	// DELETE:  Delete an existing Gig by GigId
 	//			BY DESIGN:  THIS ONLY WORKS if there are no interdependencies
