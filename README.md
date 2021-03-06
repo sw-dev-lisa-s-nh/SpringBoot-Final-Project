@@ -5,7 +5,7 @@ BESD Coding Bootcamp Spring Boot Week 6 -- Final Project
 
 **Author**:  sw-dev-lisa-s-nh
 
-**Updated**:  3/3/2021
+**Updated**:  3/6/2021
 
 **Course**:   Promineo Tech BESD Coding Bootcamp 2020-2021
 
@@ -42,7 +42,7 @@ Entities:
 4.  gig (MANYTOONE with address)
 5.  gig_status (connects musicians with gigs)
 6.  join table on musician & instrument (MANYTOMANY)
-7.  join table on gig_status & instruments requested (MANYTOMANY)
+7.  join table on gig_status & instruments requested (ONETOMANY)
 8.  (FUTURE PLAN):  credentials
 9.  (FUTURE PLAN):  Add another role to user:  systemAdmin
 
