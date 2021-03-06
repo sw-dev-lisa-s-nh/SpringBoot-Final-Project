@@ -18,7 +18,7 @@ import com.lisasmith.findAGig.service.GigService;
 import com.lisasmith.findAGig.service.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/findagig/users")
 public class UserController {
 	
 	

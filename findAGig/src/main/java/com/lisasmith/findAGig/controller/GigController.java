@@ -17,7 +17,7 @@ import com.lisasmith.findAGig.util.GenreType;
 import com.lisasmith.findAGig.util.StatusType;
 
 @RestController
-@RequestMapping("/gigs")
+@RequestMapping("/findagig/gigs")
 public class GigController {
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class GigController {
 	
 	// READ:  Retrieve all gigs -- does not return instruments, just gig information
 	@RequestMapping(value="/only", method=RequestMethod.GET)
-	public ResponseEntity<Object> getGigs() {
+	public ResponseEntity<Object> getGigs() throws Exception {
 		return new ResponseEntity<Object>(service.getGigs(), HttpStatus.OK);
 	}
 	
@@ -39,7 +39,7 @@ public class GigController {
 	// CREATE: Create a Gig
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Object> createGigAndGigStatuses(@RequestBody Gig gig) throws Exception {
-		return new ResponseEntity<Object>(service.createGig(gig), HttpStatus.CREATED);
+		return new ResponseEntity<Object>(service.createGigAndGigStatuses(gig), HttpStatus.CREATED);
 	}
 	
 	// CREATE:  Add (ADD) instruments into GigStatus for an existing Gig

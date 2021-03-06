@@ -146,3 +146,827 @@
 			--- [nio-8080-exec-7] c.l.f.s.InstrumentService                : Created instrument: Piano
 2021-03-61 20:55:47.441  INFO waratah.local
 			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Instrument name: Piano id: 5
+2021-03-62 16:20:38.092  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig if OPEN!
+2021-03-62 16:20:38.425  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-62 16:20:38.457  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Finding all Instruments for Gig: 2
+2021-03-63 22:56:02.358  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-63 22:56:56.237  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.InstrumentService                : Created instrument: Cello
+2021-03-63 22:57:33.418  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.InstrumentService                : Created instrument: Violin
+2021-03-63 22:58:42.452  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.InstrumentService                : Created instrument: Viola
+2021-03-63 22:58:55.008  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.InstrumentService                : Created instrument: Bass
+2021-03-63 22:59:04.816  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.InstrumentService                : Created instrument: Piano
+2021-03-63 22:59:13.004  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.InstrumentService                : Created instrument: Trumpet
+2021-03-64 08:40:19.967  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 08:51:52.196  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.AddressService                   : Created address.
+2021-03-64 08:51:52.362  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Created a Gig
+2021-03-64 08:54:31.532  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding one Gig: 1& Instruments for that Gig!
+2021-03-64 08:54:31.639  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 08:54:37.642  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Found Gig: 1
+2021-03-64 08:54:37.664 ERROR waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:1
+2021-03-64 08:54:44.677  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Finding one Gig: 1& Instruments for that Gig!
+2021-03-64 08:54:44.686  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 08:56:37.148  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Created a Gig
+2021-03-64 08:56:49.884  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 08:56:49.904  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 08:56:49.913  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 2
+2021-03-64 08:59:53.096  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : Created a Gig
+2021-03-64 09:01:49.066  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Created Gig: 4
+2021-03-64 09:01:49.069  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@4cc3f27c]
+2021-03-64 09:01:49.069  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:01:49.071  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:01:49.071 ERROR waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.InstrumentService                : Exception occurred while trying to create an instrument.
+2021-03-64 09:01:49.071 ERROR waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Exception occurred while trying to create a Gig Status.
+2021-03-64 09:01:49.071 ERROR waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Exception occurred while trying to create a Gig & associated Instruments.
+2021-03-64 09:04:32.854  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Created Gig: 5
+2021-03-64 09:04:32.856  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@551507ec]
+2021-03-64 09:04:32.856  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:04:32.858  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:04:32.942  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Instrument name: Piano id: 5
+2021-03-64 09:04:46.232  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 09:04:46.246  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 09:04:46.262  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 2
+2021-03-64 09:04:46.264  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 3
+2021-03-64 09:04:46.266  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 4
+2021-03-64 09:04:46.269  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 5
+2021-03-64 09:06:50.504  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 09:06:56.120  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:06:56.167  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Created Gig: 1
+2021-03-64 09:06:56.168  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@5e97e140]
+2021-03-64 09:06:56.168  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:06:56.172  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:06:56.192  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.InstrumentService                : Created instrument: Piano
+2021-03-64 09:06:56.206  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:10:10.651  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:10:10.690  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Created Gig: 1
+2021-03-64 09:10:10.690  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@66d07b3d]
+2021-03-64 09:10:10.691  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:10:10.695  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:10:10.715  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.InstrumentService                : Created instrument: Piano
+2021-03-64 09:10:10.729  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:10:32.362  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 09:10:32.387  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 09:13:08.691  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:13:08.708  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Created Gig: 2
+2021-03-64 09:13:08.708  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@3c299d10]
+2021-03-64 09:13:08.708  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:13:08.709  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:13:08.725  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.InstrumentService                : Created instrument: Cello
+2021-03-64 09:13:08.732  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.InstrumentService                : Created instrument: Violin
+2021-03-64 09:13:08.741  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.InstrumentService                : Created instrument: Viola
+2021-03-64 09:13:08.748  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.InstrumentService                : Created instrument: Bass
+2021-03-64 09:13:08.775  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Instrument name: Cello id: 2
+2021-03-64 09:13:08.799  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Instrument name: Violin id: 3
+2021-03-64 09:13:08.818  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Instrument name: Viola id: 4
+2021-03-64 09:13:08.837  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Instrument name: Bass id: 5
+2021-03-64 09:13:37.079  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 09:13:37.087  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 09:13:37.091  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 2
+2021-03-64 09:13:48.594  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding one Gig: 2& Instruments for that Gig!
+2021-03-64 09:13:48.601  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 2
+2021-03-64 09:16:45.929  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Finding one Gig: 1& Instruments for that Gig!
+2021-03-64 09:16:45.940  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 09:17:08.861  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:17:08.878  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Created Gig: 3
+2021-03-64 09:17:08.878  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@25221d20]
+2021-03-64 09:17:08.879  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:17:08.880  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:17:08.930  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:18:05.728  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:18:05.738  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Created Gig: 4
+2021-03-64 09:18:05.738  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@60b87ebf]
+2021-03-64 09:18:05.738  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:18:05.740  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:18:05.796  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:18:05.815  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:18:16.324  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 09:18:16.339  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 09:18:16.341  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Finding all Instruments for Gig: 2
+2021-03-64 09:18:16.343  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Finding all Instruments for Gig: 3
+2021-03-64 09:18:16.348  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Finding all Instruments for Gig: 4
+2021-03-64 09:18:29.694  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Finding one Gig: 4& Instruments for that Gig!
+2021-03-64 09:18:29.699  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Finding all Instruments for Gig: 4
+2021-03-64 09:19:34.571  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:19:34.576  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : Created Gig: 5
+2021-03-64 09:19:34.576  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@9090926]
+2021-03-64 09:19:34.576  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:19:34.577  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:19:34.600  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.InstrumentService                : Created instrument: Triangle
+2021-03-64 09:19:34.607  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : Instrument name: Triangle id: 6
+2021-03-64 09:20:16.891  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:20:16.902  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Created Gig: 6
+2021-03-64 09:20:16.903  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@1a3acb09]
+2021-03-64 09:20:16.903  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:20:16.905  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:20:16.946  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.InstrumentService                : Created instrument: Flugelhorn
+2021-03-64 09:20:16.958  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Instrument name: Flugelhorn id: 7
+2021-03-64 09:21:49.995  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:21:50.010  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Created Gig: 7
+2021-03-64 09:21:50.010  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@6840a88]
+2021-03-64 09:21:50.011  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:21:50.014  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:21:50.106  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Instrument name: Cello id: 2
+2021-03-64 09:21:50.133  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Instrument name: Violin id: 3
+2021-03-64 09:21:50.154  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Instrument name: Viola id: 4
+2021-03-64 09:21:50.173  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Instrument name: Violin id: 3
+2021-03-64 09:23:25.872  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Created Gig: 8
+2021-03-64 09:23:25.873  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@fe6eb95]
+2021-03-64 09:23:25.873  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:23:25.874  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:23:25.920  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.InstrumentService                : Created instrument: Trumpet
+2021-03-64 09:23:25.931  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.InstrumentService                : Created instrument: Trombone
+2021-03-64 09:23:25.936  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.InstrumentService                : Created instrument: Drums
+2021-03-64 09:23:25.961  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Instrument name: Trumpet id: 8
+2021-03-64 09:23:25.982  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:23:26.005  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Instrument name: Trombone id: 9
+2021-03-64 09:23:26.021  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Instrument name: Drums id: 10
+2021-03-64 09:23:26.037  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Instrument name: Bass id: 5
+2021-03-64 09:23:34.626  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Finding one Gig: 8& Instruments for that Gig!
+2021-03-64 09:23:34.630  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Finding all Instruments for Gig: 8
+2021-03-64 09:25:16.774  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:25:16.787  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Created Gig: 9
+2021-03-64 09:25:16.787  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@10ff73c9]
+2021-03-64 09:25:16.787  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:25:16.789  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:25:16.863  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Instrument name: Violin id: 3
+2021-03-64 09:25:16.883  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:25:36.980  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Finding one Gig: 9& Instruments for that Gig!
+2021-03-64 09:25:36.984  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Finding all Instruments for Gig: 9
+2021-03-64 09:26:51.006  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:26:51.015  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Created Gig: 10
+2021-03-64 09:26:51.015  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@7937e04c]
+2021-03-64 09:26:51.015  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:26:51.018  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:26:51.107  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:27:28.312  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Created Gig: 11
+2021-03-64 09:27:28.312  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : GigStatuses: [com.lisasmith.findAGig.entity.GigStatus@6042e5c0]
+2021-03-64 09:27:28.313  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : In instrument loop for GigStatuses
+2021-03-64 09:27:28.315  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 09:27:28.390  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Instrument name: Trumpet id: 8
+2021-03-64 09:27:28.403  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Instrument name: Piano id: 1
+2021-03-64 09:28:02.894  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:28:02.975  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:28:11.650  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:28:11.722  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:28:20.336  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:28:20.436  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:28:28.254  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:28:36.355  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:28:36.429  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:28:44.401  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:28:44.493  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:28:52.276  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:28:52.344  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:29:00.388  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:29:10.563  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:29:10.633  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.InstrumentService                : Created instrument: Didgeridoo
+2021-03-64 09:29:10.646  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:29:18.513  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:29:18.572  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:29:25.958  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:29:26.008  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.InstrumentService                : Created instrument: Harpsichord
+2021-03-64 09:29:26.020  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:29:33.431  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:29:33.499  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.InstrumentService                : Created instrument: Tuba
+2021-03-64 09:29:33.510  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:29:40.928  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.AddressService                   : Created address.
+2021-03-64 09:29:40.987  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.InstrumentService                : Created instrument: Djembe
+2021-03-64 09:29:41.010  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:29:49.895  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:30:00.213  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.InstrumentService                : Created instrument: Tympani
+2021-03-64 09:30:00.221  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.UserService                      : Created a new User.
+2021-03-64 09:36:08.101 ERROR waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:65
+2021-03-64 09:36:13.851 ERROR waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:12
+2021-03-64 09:36:19.456  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding one Gig: 12& Instruments for that Gig!
+2021-03-64 09:36:27.993  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Finding one Gig: 11& Instruments for that Gig!
+2021-03-64 09:36:28.000  INFO waratah.local
+			--- [io-8080-exec-10] c.l.f.s.GigService                       : Finding all Instruments for Gig: 11
+2021-03-64 09:36:31.719  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Finding one Gig: 13& Instruments for that Gig!
+2021-03-64 09:36:42.836  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Finding one Gig: 11& Instruments for that Gig!
+2021-03-64 09:36:42.840  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Finding all Instruments for Gig: 11
+2021-03-64 09:36:48.338  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Found Gig: 11
+2021-03-64 09:36:48.344  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Found Planner: 4
+2021-03-64 09:36:48.344  INFO waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Only an ADMIN can delete a Gig!
+2021-03-64 09:36:48.344 ERROR waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:11
+2021-03-64 09:36:54.033 ERROR waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:17
+2021-03-64 09:37:02.664  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 09:37:02.686  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 09:37:02.688  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 2
+2021-03-64 09:37:02.691  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 3
+2021-03-64 09:37:02.694  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 4
+2021-03-64 09:37:02.697  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 5
+2021-03-64 09:37:02.700  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 6
+2021-03-64 09:37:02.702  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 7
+2021-03-64 09:37:02.706  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 8
+2021-03-64 09:37:02.709  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 9
+2021-03-64 09:37:02.711  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 10
+2021-03-64 09:37:02.713  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 11
+2021-03-64 12:56:57.718 ERROR waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:17
+java.lang.NullPointerException
+	at com.lisasmith.findAGig.service.GigService.deleteGig(GigService.java:661)
+	at com.lisasmith.findAGig.controller.GigController.deleteGig(GigController.java:207)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:776)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:705)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967)
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:891)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:654)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1526)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1482)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-03-64 12:57:01.705 ERROR waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:14
+java.lang.NullPointerException
+	at com.lisasmith.findAGig.service.GigService.deleteGig(GigService.java:661)
+	at com.lisasmith.findAGig.controller.GigController.deleteGig(GigController.java:207)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:776)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:705)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967)
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:891)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:654)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1526)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1482)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-03-64 12:57:04.194 ERROR waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:13
+java.lang.NullPointerException
+	at com.lisasmith.findAGig.service.GigService.deleteGig(GigService.java:661)
+	at com.lisasmith.findAGig.controller.GigController.deleteGig(GigController.java:207)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:776)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:705)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967)
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:891)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:654)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1526)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1482)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-03-64 12:57:06.755 ERROR waratah.local
+			--- [nio-8080-exec-5] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:12
+java.lang.NullPointerException
+	at com.lisasmith.findAGig.service.GigService.deleteGig(GigService.java:661)
+	at com.lisasmith.findAGig.controller.GigController.deleteGig(GigController.java:207)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:776)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:705)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967)
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:891)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:654)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1526)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1482)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-03-64 12:57:12.807  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Found Gig: 1
+2021-03-64 12:57:12.821  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Found Planner: 4
+2021-03-64 12:57:12.821  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Only an ADMIN can delete a Gig!
+2021-03-64 12:57:12.821 ERROR waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:1
+java.lang.Exception: Only an ADMIN can delete a Gig!
+	at com.lisasmith.findAGig.service.GigService.deleteGig(GigService.java:673)
+	at com.lisasmith.findAGig.controller.GigController.deleteGig(GigController.java:207)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:776)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:705)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967)
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:891)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:654)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1526)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1482)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-03-64 12:57:19.039  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Gigs & Instruments for each Gig!
+2021-03-64 12:57:19.200  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 1
+2021-03-64 12:57:19.222  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 2
+2021-03-64 12:57:19.225  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 3
+2021-03-64 12:57:19.227  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 4
+2021-03-64 12:57:19.230  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 5
+2021-03-64 12:57:19.232  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 6
+2021-03-64 12:57:19.234  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 7
+2021-03-64 12:57:19.237  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 8
+2021-03-64 12:57:19.241  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 9
+2021-03-64 12:57:19.243  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 10
+2021-03-64 12:57:19.245  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 11
+2021-03-64 12:57:30.356  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Finding one Gig: 11& Instruments for that Gig!
+2021-03-64 12:57:30.366  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Finding all Instruments for Gig: 11
+2021-03-64 12:58:04.883  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Found Gig: 11
+2021-03-64 12:58:04.888  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Found Planner: 4
+2021-03-64 12:58:04.889  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Only an ADMIN can delete a Gig!
+2021-03-64 12:58:04.889 ERROR waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Exception occurred while trying to delete gig:11
+java.lang.Exception: Only an ADMIN can delete a Gig!
+	at com.lisasmith.findAGig.service.GigService.deleteGig(GigService.java:673)
+	at com.lisasmith.findAGig.controller.GigController.deleteGig(GigController.java:207)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:776)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:705)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967)
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:891)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:654)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1526)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1482)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-03-64 13:02:32.145  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Found Gig: 11
+2021-03-64 13:02:32.154  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Found Planner: 4
+2021-03-64 13:02:32.154 ERROR waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : Only an ADMIN can delete a Gig!
+2021-03-64 13:11:49.010  INFO waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.UserService                      : Updated user: 18
+2021-03-64 13:12:48.377  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.UserService                      : Deleted user: 17
+2021-03-64 13:13:28.938  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.UserService                      : Updated user: 18
+2021-03-64 13:16:59.832  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.AddressService                   : Created address.
+2021-03-64 13:16:59.905  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.UserService                      : Updated user: 18
+2021-03-64 13:44:19.469  INFO waratah.local
+			--- [nio-8080-exec-1] c.l.f.s.GigService                       : All instruments connected to newly created Gig: 12
+2021-03-64 16:49:11.153  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.AddressService                   : Created address.
+2021-03-64 16:49:11.234  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Counter: 1
+2021-03-64 16:49:11.416  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Instrument name: Cello id: 2
+2021-03-64 16:49:11.474  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Instrument name: Violin id: 3
+2021-03-64 16:49:11.504  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Instrument name: Viola id: 4
+2021-03-64 16:49:11.530  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Instrument name: Violin id: 3
+2021-03-64 16:49:11.544  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : All instruments connected to newly created Gig: 13
+2021-03-64 16:49:29.702  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Finding one Gig: 13& Instruments for that Gig!
+2021-03-64 16:49:29.711  INFO waratah.local
+			--- [nio-8080-exec-3] c.l.f.s.GigService                       : Finding all Instruments for Gig: 13
+2021-03-64 16:49:41.910 ERROR waratah.local
+			--- [nio-8080-exec-4] c.l.f.s.GigService                       : Only an ADMIN can delete a Gig!
+2021-03-64 16:50:42.407  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding one Gig: 14& Instruments for that Gig!
+2021-03-64 16:50:42.414  INFO waratah.local
+			--- [nio-8080-exec-6] c.l.f.s.GigService                       : Finding all Instruments for Gig: 14
+2021-03-64 16:50:54.837  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding one Gig: 13& Instruments for that Gig!
+2021-03-64 16:50:54.844  INFO waratah.local
+			--- [nio-8080-exec-7] c.l.f.s.GigService                       : Finding all Instruments for Gig: 13
+2021-03-64 16:51:17.889  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Finding one Gig: 14& Instruments for that Gig!
+2021-03-64 16:51:17.893  INFO waratah.local
+			--- [nio-8080-exec-8] c.l.f.s.GigService                       : Finding all Instruments for Gig: 14
+2021-03-64 16:51:25.786  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Finding one Gig: 13& Instruments for that Gig!
+2021-03-64 16:51:25.790  INFO waratah.local
+			--- [nio-8080-exec-9] c.l.f.s.GigService                       : Finding all Instruments for Gig: 13
+2021-03-64 17:19:33.044  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Finding one Gig: 13& Instruments for that Gig!
+2021-03-64 17:19:33.109  INFO waratah.local
+			--- [nio-8080-exec-2] c.l.f.s.GigService                       : Finding all Instruments for Gig: 13

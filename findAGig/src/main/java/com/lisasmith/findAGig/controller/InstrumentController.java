@@ -14,7 +14,7 @@ import com.lisasmith.findAGig.entity.Instrument;
 import com.lisasmith.findAGig.service.InstrumentService;
 
 @RestController
-@RequestMapping("/instruments")
+@RequestMapping("/findagig/instruments")
 public class InstrumentController {
 	
 	@Autowired

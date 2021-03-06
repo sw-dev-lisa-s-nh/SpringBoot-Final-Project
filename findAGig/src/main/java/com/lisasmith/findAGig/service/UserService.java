@@ -63,8 +63,8 @@ public class UserService {
 			return user;
 
 		} catch (Exception e) {
-			logger.error("Exception occurred while trying to create a user.");
-			throw new Exception("Unable to create a new user.");
+			logger.error("Exception occurred while trying to create a user.",e);
+			throw new Exception(e.getMessage());
 		}
 	}
 	
@@ -122,7 +122,7 @@ public class UserService {
 			// if no instruments are passed in, remove the ones that exist
 			if (user.getInstruments() == null) {
 				//remove any instruments that exist for this user
-				logger.info("Remove instruments from this User if they exist?");
+				logger.info("Remove instruments from this User if they exist.");
 				removeUserfromInstruments(oldUser);
 				
 			} else {
@@ -134,8 +134,8 @@ public class UserService {
 			logger.info("Updated user: " + id);
 			return userRepo.save(oldUser);
 		} catch (Exception e) {
-			logger.error("Exception occurred while trying to update user: " + id);
-			throw new Exception("Unable to update user id:" + id);
+			logger.error("Exception occurred while trying to update user: " + id,e);
+			throw new Exception(e.getMessage());
 		}
 	}
 	
@@ -159,7 +159,7 @@ public class UserService {
 			userRepo.delete(id);   
 			logger.info("Deleted user: " + id);
 		} catch (Exception e) {
-			logger.error("Exception occurred while trying to delete user:" + id);
+			logger.error("Exception occurred while trying to delete user:" + id,e);
 			throw new Exception(e.getMessage());
 		}
 	}

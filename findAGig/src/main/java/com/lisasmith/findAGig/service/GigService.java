@@ -44,9 +44,9 @@ public class GigService {
 	private InstrumentService instrumentService;
 	
 	
-	// CREATE:  Create a Gig
+	// CREATE:  Create a Gig  (First Implementation!)
 	//			This currently only creates the main Gig record, you must call another routine 
-	//			to add the instruments -- SHOULD THIS BE FIXED???
+	//			to add the instruments 
 		public Gig createGig(Gig newGig) throws Exception {
 			try {
 				Gig gig = new Gig();
@@ -62,20 +62,27 @@ public class GigService {
 				gig.setSalary(newGig.getSalary());
 				gig.setEventStatus(newGig.getEventStatus());
 				gig.setPlannerId(newGig.getPlannerId());
+				gig.setGigStatuses(newGig.getGigStatuses());
 				savedGig = repo.save(gig);
 				logger.info("Created a Gig");				
 				return savedGig;
 
 			} catch (Exception e) {
-				logger.error("Exception occurred while trying to create a Gig.");
-				throw new Exception ("Unable to create a Gig.");
+				logger.error("Exception occurred while trying to create a Gig.",e);
+				throw new Exception (e.getMessage());
 			}
 		}
 		
 	// READ:  Return all Gigs -- NO MATTER 
 	//			what the Gig eventStatus is set to:  PLANNED, OPEN, CANCELLED, CLOSED
-	public Iterable<Gig> getGigs() {
-		return repo.findAll();
+	public Iterable<Gig> getGigs() throws Exception {
+		try {
+			return repo.findAll();
+		} catch (Exception e) {
+			logger.error("Retrieve gigs failed!",e);
+			throw new Exception(e.getMessage());
+		}
+		
 	}
 	
 	// READ:  Return all Gigs & Instruments Information -- NO MATTER
@@ -273,9 +280,9 @@ public class GigService {
 	}
 	 	
 	
-	// In process here...  Not sure how to create a relationship between
-	// Gig and all GigStatus in memory... so that I can then retrieve them from that list.
-	// I only pass in one "instruments" in the JSON.  
+	// CREATE:  Create a Gig  (Upgraded Implementation!)
+	//			This creates the main Gig record, and all of the GigStatus records
+	//			to add the instruments 	
 	public Gig createGigAndGigStatuses(Gig newGig) throws Exception {
 		try {
 			Gig gig = new Gig();
@@ -290,15 +297,72 @@ public class GigService {
 			gig.setDescription(newGig.getDescription());
 			gig.setSalary(newGig.getSalary());
 			gig.setPlannerId(newGig.getPlannerId());
+			gig.setEventStatus(newGig.getEventStatus());
 			savedGig = repo.save(gig);
-			logger.info("Created Gig: " + savedGig.getGigId());
-			// Future Development:  Add a way to read the instruments from this gig!
+			gig.setGigStatuses(newGig.getGigStatuses());
+			List<GigStatus> inputGigStatuses  = gig.getGigStatuses();
+			List<GigStatus> newGigStatuses = new ArrayList<GigStatus>();
+			if (inputGigStatuses != null) {
+					newGigStatuses = (List<GigStatus>)createGigStatusWithinGig(inputGigStatuses, gig.getGigId());
+					logger.info("All instruments connected to newly created Gig: " + savedGig.getGigId());
+				}
+			savedGig.setGigStatuses(newGigStatuses);
 			return repo.save(savedGig);
 		} catch (Exception e) {
-			logger.error("Exception occurred while trying to create a Gig & associated Instruments.");
-			throw new Exception ("Unable to create a Gig or associated Instruments.");
+			logger.error("Exception occurred while trying to create a Gig or associated Instruments.",e);
+			throw new Exception (e.getMessage());
 		}
 	}
+	
+	// CREATE:  Create instrument records for a particular Gig by gigId
+		public Iterable<GigStatus> createGigStatusWithinGig(List<GigStatus> gigStatusList, Long gigId) throws Exception {
+			try {
+				List<GigStatus> savedGigStatuses = new ArrayList<GigStatus>();			
+				Gig oldGig = repo.findOne(gigId);
+				
+				GigStatus createGigStatus = new GigStatus();
+				int counter=1;
+				for (GigStatus gigStatus : gigStatusList ) {
+					logger.info("Counter: " + counter++);
+					createGigStatus.setInstruments(instrumentService.createInstruments(gigStatus.getInstruments()));
+					
+					List<Instrument> gigRequiredInstruments = new ArrayList<Instrument>();		
+					gigRequiredInstruments = createGigStatus.getInstruments();
+					
+					if (gigRequiredInstruments != null) {
+						Double splitSalary = (oldGig.getSalary()/gigRequiredInstruments.size());
+
+						for (Instrument inst : gigRequiredInstruments) {
+							GigStatus newGigStatus = new GigStatus();
+							newGigStatus.setGigId(oldGig.getGigId());
+							newGigStatus.setStatus(StatusType.OPEN);
+							newGigStatus.setSalary(splitSalary);
+							newGigStatus.setInstruments(instrumentService.createInstruments(gigRequiredInstruments));
+							
+							for (Instrument oneInst : newGigStatus.getInstruments()) {
+								if (oneInst.getName().equals(inst.getName())) {
+									newGigStatus.setInstrumentId(oneInst.getInstrumentId());
+								}
+							}				
+							// Create a new GigStatus
+							newGigStatus = statusRepo.save(newGigStatus);
+							addGigStatustoInstruments(newGigStatus);
+							savedGigStatuses.add(newGigStatus);
+						} 
+					}
+				}			
+				return savedGigStatuses;			
+			} catch (Exception e) {
+					logger.error("Exception occurred while trying to add an instrument to a Gig.", e);
+					throw new Exception(e.getMessage());
+			}
+						
+		}
+	
+	
+	
+	
+	
 
 	//  CREATE:  Create relationship between GigStatus table and instruments table
 	private void addGigStatustoInstruments(GigStatus gigStatus) {		
@@ -365,8 +429,8 @@ public class GigService {
 			}
 			return savedGigStatuses;			
 		} catch (Exception e) {
-				logger.error("Exception occurred while trying to create a Gig Status.");
-				throw new Exception("Unable to add an instrument to a Gig.");
+				logger.error("Exception occurred while trying to add an instrument to a Gig.",e);
+				throw new Exception(e.getMessage());
 		}
 					
 	}
@@ -374,44 +438,38 @@ public class GigService {
 	// CONFIRM a musician in a particular Gig By the Gig Planner	
 	public GigStatus updateGigStatusConfirm(GigStatus gigStatus, Long gigId, Long musicianId, Long plannerId) throws Exception {
 		
-		logger.info("In updateGigStatusConfirm!");
 		try {
 			//Retrieve all GigStatuses associated with the passed in GigId
 			Gig requestedGig = repo.findOne(gigId);
 			
 			Iterable<GigStatus> matchedGigStatuses = statusRepo.findByGigId(gigId);
-			logger.info("In updateGigStatusConfirm -- after findByGigId");
 			
-			int counter = 1;
-			for (GigStatus anotherGigStatus : matchedGigStatuses) {
-				logger.info("Counter: " + counter++ + "  GigStatus #: " + anotherGigStatus.getId());
-			}
+//			int counter = 1;
+//			for (GigStatus anotherGigStatus : matchedGigStatuses) {
+//				logger.info("Counter: " + counter++ + "  GigStatus #: " + anotherGigStatus.getId());
+//			}
+			
 			//Retrieve THE Instrument RECORD of the requested Instrument!  
 			Instrument requestedInstrument = new Instrument();
 			requestedInstrument = findMatchingInstrument(gigStatus.getInstruments());
-			logger.info("In updateGigStatusConfirm -- requestedInstrument is: " + requestedInstrument.getName());
 			
 			
 			// Iterate through the gigStatuses, and CONFIRM the ONE requested by this musician
-			counter = 1;
 			for (GigStatus matchGigStatus : matchedGigStatuses) {
-				logger.info("GigStatus #: " + matchGigStatus.getId());
-				logger.info("Loop #: " + counter++ + " through GigStatus for Gig: " + gigId);
+
 				// ONLY the registered planner can CONFIRM a musician for a Gig!
 				// if plannerId matches Gig.plannerId(), &&  musicianId matches GigStatus.musicianId && gigStatus is REQUESTED
 				
-				logger.info("PlannerId of requestedGig: " + requestedGig.getPlannerId());
-				logger.info("MusicianId of matchGigStatus: " + matchGigStatus.getMusicianId());
-				logger.info("Status of matchGigStatus: " + matchGigStatus.getStatus());
+//				logger.info("PlannerId of requestedGig: " + requestedGig.getPlannerId());
+//				logger.info("MusicianId of matchGigStatus: " + matchGigStatus.getMusicianId());
+//				logger.info("Status of matchGigStatus: " + matchGigStatus.getStatus());
 				
 				if ((requestedGig.getPlannerId().equals(plannerId)) && (matchGigStatus.getStatus().equals(StatusType.REQUESTED))) {				
 					if ((matchGigStatus.getMusicianId() != null) && (matchGigStatus.getMusicianId().equals(musicianId))) {
-						logger.info("Matching plannerId, musicianId and status!");
 						
 						// CONFIRM that the PLANNER wants to match this Instrument -- in case the musician requested more than one!
 						if (matchGigStatus.getInstrumentId().equals(requestedInstrument.getInstrumentId())) {
 							// Change status to CONFIRMED.
-							logger.info("Matching instrument");
 							matchGigStatus.setStatus(StatusType.CONFIRMED);
 							statusRepo.save(matchGigStatus);
 							logger.info("Musician: " + musicianId + " has been CONFIRMED for Gig: " + gigId + " by Planner: " + plannerId);
@@ -422,7 +480,6 @@ public class GigService {
 					}
 				}
 			}
-			logger.info("End of Loop -- No gigstatus found!");
 		} catch (Exception e) {
 			logger.error("Exception occurred while trying to hire a musician -- updating a Gig's status.");
 			throw new Exception("Unable to update gig: " +  gigId  + " with userId: " + musicianId);
@@ -439,7 +496,6 @@ public class GigService {
 		// Initialize the boolean for USER INSTRUMENT MATCH an instrument for the gig
 		boolean matchInstrument = false;
 		boolean matchUser = false;
-		logger.info("In updateGigStatus");
 		try {		
 			Iterable<GigStatus> matchedGigStatuses = new ArrayList<GigStatus>(); 
 			
@@ -485,7 +541,6 @@ public class GigService {
 						
 						//If new status is REQUESTED, set it, and set Musician_ID to userId
 						if (gigStatus.getStatus().equals(StatusType.REQUESTED)) {
-							logger.info("looking to make a request");
 							relatedGigStatus.setStatus(StatusType.REQUESTED);
 							relatedGigStatus.setMusicianId(theMatchUser.getId());
 							statusRepo.save(relatedGigStatus);
@@ -506,7 +561,7 @@ public class GigService {
 			}  // End of for every gigStatus in this gig (matches gigId)
 
 		} catch  (Exception e) {
-			logger.error("Unable to update gigStatus: " + relatedGigStatus.getId() + " with userId: " + userId);
+			logger.error("Unable to update gigStatus: " + relatedGigStatus.getId() + " with userId: " + userId, e);
 			throw new Exception(e.getMessage());
 		}	
 		logger.error("Unable to update gigStatus: " + relatedGigStatus.getId() + " with userId: " + userId);
@@ -592,24 +647,21 @@ public class GigService {
 	//			needs to be saved to Inform Musicians of the CANCELLED or CLOSED status
 	//			of a Gig!
 	public void deleteGig(Long gigId) throws Exception {	
+		Gig requestedGig = repo.findOne(gigId);
+		User planner = userRepo.findOne(requestedGig.getPlannerId());
+		if (!(planner.getUserType().equals(UserType.ADMIN))) {
+			logger.error("Only an ADMIN can delete a Gig!");
+			throw new Exception ("Only an ADMIN can delete a Gig!");
+		}			
 		try {
-			Gig requestedGig = repo.findOne(gigId);
-			logger.info("Found Gig: " + requestedGig.getGigId());
-			User planner = userRepo.findOne(requestedGig.getPlannerId());
-			logger.info("Found Planner: " + planner.getId());
-			if (planner.getUserType().equals(UserType.ADMIN)) {
-				Iterable<GigStatus> gigStatusByGigId = getGigStatuses(gigId);
-				for (GigStatus status : gigStatusByGigId){
-					statusRepo.delete(status);
-				}
-				repo.delete(gigId);
-				logger.info("Deleted gig: " + gigId);
-			} else {
-				logger.info("Only an ADMIN can delete a Gig!");
-				throw new  Exception("Only an ADMIN can delete a Gig!");
+			Iterable<GigStatus> gigStatusByGigId = getGigStatuses(gigId);			
+			for (GigStatus status : gigStatusByGigId){
+				statusRepo.delete(status);
 			}
+			repo.delete(gigId);
+			logger.info("Deleted gig: " + gigId);	
 		} catch (Exception e) {
-			logger.error("Exception occurred while trying to delete gig:" + gigId);
+			logger.error("Exception occurred while trying to delete gig:" + gigId,e);
 			throw new Exception(e.getMessage());
 		}
 	}

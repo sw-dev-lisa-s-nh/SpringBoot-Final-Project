@@ -47,8 +47,8 @@ public class InstrumentService {
 				return createNewInstrument;
 			}	
 		} catch (Exception e) {
-			logger.error("Exception occurred while trying to create an instrument.");
-			throw new Exception("Unable to create an instrument.");
+			logger.error("Exception occurred while trying to create an instrument.",e);
+			throw new Exception(e.getMessage());
 		}
 	}
 	
@@ -70,8 +70,8 @@ public class InstrumentService {
 			}
 			return newCreations;
 		} catch (Exception e) {
-			logger.error("Exception occurred while trying to create an instrument.");
-			throw new Exception("Unable to create an instrument.");
+			logger.error("Exception occurred while trying to create an instrument.",e);
+			throw new Exception(e.getMessage());
 		}
 	}
 	
@@ -105,7 +105,7 @@ public class InstrumentService {
 			return repo.save(oldInstrument);
 		} catch (Exception e) {
 			logger.error("Exception occurred while trying to update instrument: " + id, e);
-			throw new Exception("Unable to update instrument: " + id);
+			throw new Exception(e.getMessage());
 		}
 	}
 	// DELETE:  This is ONLY allowed if an instrument is not being referenced by any user or gig!
