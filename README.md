@@ -1,4 +1,14 @@
 # SpringBoot-Final-Project
+
+NOTE:  Current Promineo Tech Back-End students -- This final project was written before the jeep-sales project was created.  This follows a different design for a REST API.  Notice the following:
+
+      (1) Lack of interface files for all layers
+      
+      (2) No Swagger Interface
+      
+      (3) This project was tested by using Postman (A downloadable app). -- ask me if you are interested in learning this!
+      
+      
 Final Project for our Promineo Tech BESD Coding Bootcamp -- WebAPI 
 
 BESD Coding Bootcamp Spring Boot Week 6 -- Final Project 
