@@ -8,6 +8,8 @@ NOTE:  Current Promineo Tech Back-End students -- This final project was written
       
       (3) This project was tested by using Postman (A downloadable app). -- ask me if you are interested in learning this!
       
+      (4) No lombok dependancy.
+      
       
 Final Project for our Promineo Tech BESD Coding Bootcamp -- WebAPI 
 
