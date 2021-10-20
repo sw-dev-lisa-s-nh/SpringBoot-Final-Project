@@ -10,6 +10,9 @@ NOTE:  Current Promineo Tech Back-End students -- This final project was written
       
       (4) No lombok dependancy.
       
+      (5) No JDBC calls -- using JPA instead (an ORM)  
+                   See this link for a great explanation of JDBC vs. JPA https://www.baeldung.com/jpa-vs-jdbc
+      
       
 Final Project for our Promineo Tech BESD Coding Bootcamp -- WebAPI 
 
