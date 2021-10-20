@@ -1,12 +1,15 @@
 # SpringBoot-Final-Project
 
-NOTE:  Current Promineo Tech Back-End students -- This final project was written before the jeep-sales project was created.  This follows a different design for a REST API.  Notice the following:
+NOTE:  Current Promineo Tech Back-End students -- This final project was written before the jeep-sales project was created.  
+       This follows a different design for a REST API.  
+       Notice the following:
 
       (1) Lack of interface files for all layers
       
       (2) No Swagger Interface
       
-      (3) This project was tested by using Postman (A downloadable app). -- ask me if you are interested in learning this!
+      (3) This project was tested by using Postman (A downloadable app)
+          Ask me for a demonstration if you are interested in learning about Postman!
       
       (4) No lombok dependancy.
       
